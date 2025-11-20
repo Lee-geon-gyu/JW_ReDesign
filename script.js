@@ -1,7 +1,4 @@
 console.clear();
-
-gsap.registerPlugin(ScrollTrigger);
-
 // menuboxDropdown ------------------------------ //
 function menuboxDropdown__init() {
   $("header > .hd-container > .menu-box").mouseenter(function () {
@@ -171,3 +168,5 @@ swiperCustom__init();
 headerChangeOnSection__init();
 bottomSelectboxDropUp__init();
 scrollTrigger__init();
+gsap.registerPlugin(ScrollTrigger);
+AOS.init();

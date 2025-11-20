@@ -8,6 +8,8 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- style CSS -->
     <link rel="stylesheet" href="style.CSS" />
   </head>
@@ -15,7 +17,7 @@
     <header>
       <div class="hd-container">
         <div class="hd-logo-box">
-          <a href="#" onclick="return false">
+          <a href="#">
             <img class="hd-logo-c" src="Image_file/header-imgs/header-logo-change.png" alt="hd-logo-color" />
             <img class="hd-logo-w" src="Image_file/header-imgs/header-logo.png" alt="hd-logo-white" />
           </a>
@@ -154,11 +156,9 @@
         </div>
         <div class="text-container">
           <h1>
-            열정과 혁신,
-            <br>
-            경험과 기술력이 만나
-            <br>
-            신약의 새로운 내일을 그리다.
+            <span data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">열정과 혁신,</span>
+            <span data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">경험과 기술력이 만나</span>
+            <span data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">신약의 새로운 내일을 그리다.</span>
           </h1>
           <div class="text-en">
             <img src="Image_file/main-images/sec-1/text-en-arrow.png" alt="right-arrow">
@@ -284,9 +284,11 @@
       </div>
     </footer>
     <!-- GSAP -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-     <!-- Scroll Trigger -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <!-- Scroll Trigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <!-- J-Query -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Swiper JS -->
