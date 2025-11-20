@@ -114,15 +114,15 @@ function swiperCustom__init() {
 // headerChangeOnSection ------------------------------ //
 function headerChangeOnSection__init() {
   const header = document.querySelector("header");
-  const targets = document.querySelectorAll(`.sec-5, .sec-2`);
+  const target = document.querySelectorAll(`.sec-2, .sec-5`);
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          header.classList.add("on-sec-5");
+          header.classList.add("on-sec-w");
         } else {
-          header.classList.remove("on-sec-5");
+          header.classList.remove("on-sec-w");
         }
       });
     },
@@ -131,8 +131,8 @@ function headerChangeOnSection__init() {
     }
   );
 
-  targets.forEach((el) => {
-    // observer.observe(el);
+  target.forEach((el) => {
+    observer.observe(el);
   });
 }
 // headerChangeOnSection ------------------------------ //
