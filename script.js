@@ -1,7 +1,7 @@
 console.clear();
 
 AOS.init();
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 // menuboxDropdown ------------------------------ //
 function menuboxDropdown__init() {
@@ -114,7 +114,7 @@ function swiperCustom__init() {
 // headerChangeOnSection ------------------------------ //
 function headerChangeOnSection__init() {
   const header = document.querySelector("header");
-  const target = document.querySelectorAll(`.sec-2, .sec-5`);
+  const target = document.querySelectorAll(`.sec-2, .sec-6, .sec-7, .sec-8`);
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -135,7 +135,7 @@ function headerChangeOnSection__init() {
     observer.observe(el);
   });
 }
-// headerChangeOnSection ------------------------------ //
+// bottomSelectboxDropUp ------------------------------ //
 function bottomSelectboxDropUp__init() {
   $("footer > .btn-wrap > .btn").click(function () {
     $(this).find("> ul").toggleClass("bottomDropUp");
@@ -173,46 +173,34 @@ function scrollTrigger__init() {
 }
 // GSAP scrollLeins ------------------------------ //
 function scrollLeins__init() {
-const lenis = new Lenis({
-  duration: 3,
-  easing: t => t,
-  smooth: true,
-  smoothTouch: false
-});
+  const lenis = new Lenis({
+    lerp: 0.055,
+    easing: t => t,
+    smooth: true,
+    smoothTouch: false
+  });
 
-function raf(time) {
-  lenis.raf(time);
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
   requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-lenis.on('scroll', ScrollTrigger.update);
+  lenis.on('scroll', ScrollTrigger.update);
 
-gsap.utils.toArray("[data-speed]").forEach(el => {
-  gsap.to(el, {
-    y: () => -(el.dataset.speed * window.innerHeight / 5),
-    ease: "none",
-    scrollTrigger: {
-      trigger: el,
-      start: "top bottom",
-      scrub: true
-    }
+  gsap.utils.toArray("[data-speed]").forEach(el => {
+    gsap.to(el, {
+      y: () => -(el.dataset.speed * window.innerHeight / 5),
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: "top bottom",
+        scrub: true
+      }
+    });
   });
-});
-
-gsap.utils.toArray(".section").forEach(sec => {
-  if (sec.classList.contains("sec-2")) return;
-
-  ScrollTrigger.create({
-    trigger: sec,
-    start: "top top",
-    end: "bottom top",
-    pin: true,
-    pinSpacing: true,
-  });
-});
 }
 // headerHide ------------------------------ //
 function headerHide__init() {
@@ -254,6 +242,39 @@ function headerHide__init() {
     });
   })();
 }
+// marqueeSlide ------------------------------ //
+function marqueeSlide__init() {
+window.addEventListener("load", () => {
+  const box = document.querySelector(".marquee-box");
+  const clone = box.cloneNode(true);
+  box.parentNode.appendChild(clone);
+
+  const tl = gsap.timeline({
+    repeat: -1,
+    ease: "none"
+  });
+
+  const totalWidth = box.scrollWidth;
+
+  tl.fromTo(
+    ".marquee-box",
+    { x: 0 },
+    {
+      x: -totalWidth,
+      duration: 30,
+      ease: "none",
+    }
+  );
+
+  document.querySelector(".marquee-wrapper").addEventListener("mouseenter", () => {
+    tl.pause();
+  });
+
+  document.querySelector(".marquee-wrapper").addEventListener("mouseleave", () => {
+    tl.play();
+  });
+});
+}
 // Functions Operate Key ------------------------------ //
 menuboxDropdown__init();
 menuitemDropdown__init();
@@ -264,3 +285,4 @@ bottomSelectboxDropUp__init();
 scrollTrigger__init();
 scrollLeins__init();
 headerHide__init();
+marqueeSlide__init();
