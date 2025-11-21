@@ -148,7 +148,7 @@ function scrollTrigger__init() {
     scrollTrigger: {
       trigger: ".sec-2",
       start: "top top",
-      end: "+=1000%",
+      end: "+=1250%",
       pin: true,
       scrub: 1,
       invalidateOnRefresh: true,
@@ -166,7 +166,50 @@ function scrollTrigger__init() {
 
     .to(".t3", { opacity: 0, y: 0, duration: 0 })
     .fromTo(".t4", { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 3 }, "<")
+
+    .to(".t4", { opacity: 0, y: 0, duration: 0 })
+    .fromTo(".t5", { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 3 }, "<")
     .to(".sec-2 > .bg-container", { opacity: 0, duration: 3 }, "<");
+}
+// headerHide ------------------------------ //
+function headerHide__init() {
+  (function () {
+    const header = document.querySelector("header");
+    if (!header) return;
+
+    let lastY = window.scrollY || window.pageYOffset;
+    let ticking = false;
+
+    function onScroll() {
+      const currentY = window.scrollY || window.pageYOffset;
+
+      if (currentY > lastY) {
+        header.classList.add("hide");
+        header.classList.remove("show");
+      } else if (currentY < lastY) {
+        header.classList.add("show");
+        header.classList.remove("hide");
+      }
+      lastY = currentY;
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!ticking) {
+          window.requestAnimationFrame(onScroll);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("load", function () {
+      lastY = window.scrollY || window.pageYOffset;
+      header.classList.add(lastY === 0 ? "show" : "hide");
+    });
+  })();
 }
 // Functions Operate Key ------------------------------ //
 menuboxDropdown__init();
@@ -176,3 +219,4 @@ swiperCustom__init();
 headerChangeOnSection__init();
 bottomSelectboxDropUp__init();
 scrollTrigger__init();
+headerHide__init();
