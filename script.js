@@ -142,7 +142,7 @@ function scrollTrigger__init() {
     scrollTrigger: {
       trigger: ".sec-2 > .content-wrap",
       start: "top top",
-      end: "+=1250%",
+      end: "+=850%",
       pin: true,
       scrub: 1,
       invalidateOnRefresh: true,
