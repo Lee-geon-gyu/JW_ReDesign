@@ -8,7 +8,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -86,7 +87,7 @@ img {
 }
 
 .top-btn:hover > span {
-  transform: translateY(-200%);
+  transform: translateY(-400%);
   transition: all 0.2s ease;
 }
 
@@ -97,12 +98,12 @@ img {
   display: flex;
   width: 100%;
   height: 100%;
-  transform: translateY(200%);
+  transform: translateY(400%);
   transition: all 0.2s ease;
 }
 
 .top-btn:hover > span::before {
-  transform: translateY(200%);
+  transform: translateY(400%);
   transition: all 0.2s ease;
 }
 /* Swiper --------------------------------------------------------------- */
@@ -880,6 +881,61 @@ main > .sec-4 > .top-box > span:nth-child(3) {
   line-height: 1.6;
 }
 
+main > .sec-4 > .top-box > span:nth-child(4) {
+  position: relative;
+  margin-top: 3.6rem;
+  width: 19rem;
+  height: 5rem;
+  font-size: clamp(1.6rem, 1vw, 2rem);
+  font-weight: 800;
+  color: var(--main-color-gray);
+  background-color: var(--main-color-white);
+  border-radius: 3.6rem;
+  border: 0.1rem solid var(--color-white);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+main > .sec-4 > .top-box > span:nth-child(4) > a {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+main > .sec-4 > .top-box > span:nth-child(4):hover > a {
+  color: var(--main-color-white);
+  transition: all 0.3s ease-in-out;
+}
+
+main > .sec-4 > .top-box > span:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  border-radius: 3.6rem;
+  color: var(--main-color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+main > .sec-4 > .top-box > span:nth-child(4):hover::after {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
 main > .sec-4 > .bottom-box {
   position: static;
   z-index: 8;
@@ -907,67 +963,91 @@ main > .sec-4 > .bottom-box > .circle-3 {
 
 main > .sec-4 > .bottom-box > .circles {
   position: relative;
-  width: 48rem;
-  height: 48rem;
+  width: 44rem;
+  height: 44rem;
   border-radius: 50%;
   background-color: var(--color-black);
+  color: var(--main-color-white);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
   z-index: 8;
-  transition: all 0.6s linear;
-  box-shadow: 0.8rem 0.8rem 2.4rem rgba(0, 67, 142, 0.6);
+  transition: all 0.2s linear;
+  box-shadow: 0 0.8rem 2.4rem rgba(0, 67, 142, 0.6);
+  perspective: 120rem;
+  transform-style: preserve-3d;
 }
 
 main > .sec-4 > .bottom-box > .circles:hover {
-  transform: translateY(-10%);
-  transition: all 0.6s linear;
-  box-shadow: none;
+  border-radius: 3.6rem;
+  transform: rotateY(180deg) scale(1.1);
+  transition: all 0.2s linear;
 }
 
-main > .sec-4 > .bottom-box > .circles::before {
+main > .sec-4 > .bottom-box > .circles:hover > .flip-card-back {
+  border-radius: 3.6rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+main > .sec-4 > .bottom-box > .circles > .flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+}
+
+main > .sec-4 > .bottom-box > .circles > .flip-card-front {
+  border-radius: 50%;
+  transform: rotateY(0deg);
+}
+
+main > .sec-4 > .bottom-box > .circles > .flip-card-front::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  background-color: var(--color-black);
-  border-radius: 50%;
-  opacity: 0.4;
-  transition: all 0.15s ease-in-out;
+  visibility: visible;
+  z-index: 2;
 }
 
-main > .sec-4 > .bottom-box > .circles:hover::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: var(--color-black);
+main > .sec-4 > .bottom-box > .circles > .flip-card-back {
   border-radius: 50%;
-  opacity: 0;
-  transition: all 0.15s ease-in-out;
+  transform: rotateY(180deg);
 }
 
-main > .sec-4 > .bottom-box > .circles > span {
+main > .sec-4 > .bottom-box > .circles > .flip-card-front > span {
   color: var(--main-color-white);
   cursor: pointer;
   position: static;
   z-index: 9;
 }
 
-main > .sec-4 > .bottom-box > .circles > span:first-child {
-  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+main > .sec-4 > .bottom-box > .circles > .flip-card-front > span:first-child {
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
   font-weight: 600;
 }
 
-main > .sec-4 > .bottom-box > .circles > span:last-child {
-  font-size: clamp(1.4rem, 4.5vw, 1.6rem);
+main > .sec-4 > .bottom-box > .circles > .flip-card-front > span:last-child {
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
   font-weight: 500;
+}
+
+main > .sec-4 > .bottom-box > .circles > .flip-card-back > p {
+  font-size: clamp(1.4rem, 1vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.8;
 }
 /* main > sec-5 --------------------------------------------------------------- */
 main > .sec-5 {
@@ -1089,14 +1169,14 @@ main > .sec-5 > .text-container > .bottom-box > .value-wrap > .right-box:hover >
 main > .sec-6 {
   width: 100dvw;
   min-width: 192rem;
-  height: 118dvh;
+  height: 128dvh;
   min-height: 118rem;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 6rem 0;
+  padding: 6rem 0 0 0;
   background-color: var(--main-color-white);
   cursor: default;
 }
@@ -1212,12 +1292,14 @@ main > .sec-6 > .top-box > .search-wrap {
 
 main > .sec-6 > .top-box > .search-wrap > #search {
   display: block;
-  border-radius: 2.4rem;
   padding: 1.6rem 3.2rem;
   width: 100rem;
-  border: 0.2rem solid rgba(109, 109, 109, 0.5);
+  outline: none;
+  border: none;
+  border-bottom: 0.2rem solid rgba(109, 109, 109, 0.5);
   color: var(--color-black);
   transition: all 0.2s ease;
+  background-color: transparent;
   font-size: 1.8rem;
   font-family: "Pretendard";
   font-weight: normal;
@@ -1227,7 +1309,7 @@ main > .sec-6 > .top-box > .search-wrap > #search {
 main > .sec-6 > .top-box > .search-wrap > #search::placeholder {
   border: none;
   stroke: none;
-  color: var(--main-color-gray);
+  color: var(--color-black);
 }
 
 main > .sec-6 > .top-box > .search-wrap > #search:focus::placeholder {
@@ -1235,7 +1317,7 @@ main > .sec-6 > .top-box > .search-wrap > #search:focus::placeholder {
 }
 
 main > .sec-6 > .top-box > .search-wrap > #search:focus {
-  border: 0.2rem solid var(--color-black);
+  border-bottom: 0.2rem solid var(--color-black);
   outline: none;
 }
 
@@ -1266,11 +1348,11 @@ main > .sec-6 > .top-box > .search-wrap > #btnSearch {
   text-align: center;
   padding: 4.8rem;
   gap: 1.2rem;
-  border-left: 0.1rem solid rgba(131, 131, 131, 0.5);
 }
 
 .goods-slider .goods-box > a {
   display: flex;
+  padding: 2.4rem 0;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -1296,15 +1378,16 @@ main > .sec-6 > .top-box > .search-wrap > #btnSearch {
 }
 
 .goods-slider .goods-box > span:nth-child(2) {
-  font-size: 3.4rem;
+  font-size: 3.2rem;
   font-weight: 700;
   color: var(--color-black);
 }
 
 .goods-slider .goods-box > span:nth-child(4) {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 500;
-  color: var(--main-color-gray);
+  line-height: 1.5;
+  color: var(--color-black);
 }
 /* main > sec-7 --------------------------------------------------------------- */
 main > .sec-7 {

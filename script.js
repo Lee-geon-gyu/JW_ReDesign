@@ -276,8 +276,8 @@ function slickSlider__init() {
   $(document).ready(function () {
     $(".goods-slider").slick({
       centerMode: true,
-      centerPadding: "6rem",
-      slidesToShow: 2,
+      centerPadding: "2rem",
+      slidesToShow: 3,
       autoplay: true,
       autoplaySpeed: 2000,
       speed: 600,
