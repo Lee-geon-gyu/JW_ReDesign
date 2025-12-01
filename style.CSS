@@ -25,7 +25,7 @@ a {
 }
 
 html {
-  font-size: 10px;
+  font-size: max(6px, 0.52083333vw);
 }
 
 html body {
@@ -126,7 +126,7 @@ img {
 }
 /* header --------------------------------------------------------------- */
 header {
-  width: 100dvw;
+  width: 100%;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -155,7 +155,8 @@ header.on-sec-w {
 }
 
 header > .hd-container {
-  width: 164rem;
+  width: 100%;
+  max-width: 164rem;
   height: 9rem;
   display: flex;
   justify-content: space-between;
@@ -478,9 +479,8 @@ main {
 }
 /* main > sec-1 --------------------------------------------------------------- */
 main > .sec-1 {
-  width: 100dvw;
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
@@ -601,9 +601,8 @@ main > .sec-1 > .text-container > .custom-pagination > .current,
 }
 /* main > sec-2 --------------------------------------------------------------- */
 .sec-2 {
-  width: 100vw;
-  min-width: 192rem;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   position: relative;
   cursor: default;
   z-index: 6;
@@ -666,10 +665,8 @@ main > .sec-1 > .text-container > .custom-pagination > .current,
 }
 /* main > sec-3 --------------------------------------------------------------- */
 main > .sec-3 {
-  width: 100dvw;
-  min-width: 192rem;
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   padding: 6rem 0;
   cursor: default;
   display: flex;
@@ -813,16 +810,15 @@ main > .sec-3 > .right-box > .produce-box:hover > div {
 }
 /* main > sec-4 --------------------------------------------------------------- */
 main > .sec-4 {
-  width: 100dvw;
-  min-width: 192rem;
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   padding: 8rem 0;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12rem;
   background-color: #111;
   z-index: 6;
   overflow: hidden;
@@ -948,27 +944,25 @@ main > .sec-4 > .bottom-box {
   padding: var(--margin-grid-system);
 }
 
-main > .sec-4 > .bottom-box > .circle-1 {
+main > .sec-4 > .bottom-box > .circle-1 > .flip-card {
   background: url(Image_file/main-images/sec-4/sec-4-circle-1-img.png) no-repeat center center;
   background-size: var(--object-cover);
 }
 
-main > .sec-4 > .bottom-box > .circle-2 {
+main > .sec-4 > .bottom-box > .circle-2 > .flip-card {
   background: url(Image_file/main-images/sec-4/sec-4-circle-2-img.png) no-repeat center center;
   background-size: var(--object-cover);
 }
 
-main > .sec-4 > .bottom-box > .circle-3 {
+main > .sec-4 > .bottom-box > .circle-3 > .flip-card {
   background: url(Image_file/main-images/sec-4/sec-4-circle-3-img.png) no-repeat center center;
   background-size: var(--object-cover);
 }
 
 main > .sec-4 > .bottom-box > .circles {
-  position: relative;
   width: 44rem;
   height: 44rem;
   border-radius: 50%;
-  background-color: var(--color-black);
   color: var(--main-color-white);
   display: flex;
   flex-direction: column;
@@ -976,24 +970,31 @@ main > .sec-4 > .bottom-box > .circles {
   align-items: center;
   gap: 0.8rem;
   z-index: 8;
-  transition: all 0.2s linear;
-  box-shadow: 0 0.8rem 2.4rem rgba(0, 67, 142, 0.6);
-  perspective: 120rem;
-  transform-style: preserve-3d;
 }
 
-main > .sec-4 > .bottom-box > .circles:hover {
+main > .sec-4 > .bottom-box > .circles > .flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all 0.2s ease;
+  transform-style: preserve-3d;
+  perspective: 120rem;
+  border-radius: 50%;
+  box-shadow: 0 0.8rem 2.4rem rgba(0, 67, 142, 0.6);
+}
+
+main > .sec-4 > .bottom-box > .circles:hover > .flip-card {
   border-radius: 3.6rem;
   transform: rotateY(180deg) scale(1.1);
   transition: all 0.2s linear;
 }
 
-main > .sec-4 > .bottom-box > .circles:hover > .flip-card-back {
+main > .sec-4 > .bottom-box > .circles:hover > .flip-card > .flip-card-back {
   border-radius: 3.6rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front,
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
@@ -1008,14 +1009,16 @@ main > .sec-4 > .bottom-box > .circles > .flip-card-front,
   white-space: nowrap;
   z-index: 3;
   pointer-events: none;
+  border-radius: 50%;
+  transition: border-radius 0.2s ease-in-out;
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front {
   border-radius: 50%;
   transform: rotateY(0deg);
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front::after {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -1024,39 +1027,37 @@ main > .sec-4 > .bottom-box > .circles > .flip-card-front::after {
   z-index: 2;
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-back {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-back {
   border-radius: 50%;
   transform: rotateY(180deg);
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front > span {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front > span {
   color: var(--main-color-white);
   cursor: pointer;
   position: static;
   z-index: 9;
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front > span:first-child {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front > span:first-child {
   font-size: clamp(2.4rem, 4.5vw, 3.2rem);
   font-weight: 600;
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-front > span:last-child {
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-front > span:last-child {
   font-size: clamp(1.6rem, 4.5vw, 2rem);
   font-weight: 500;
 }
 
-main > .sec-4 > .bottom-box > .circles > .flip-card-back > p {
-  font-size: clamp(1.4rem, 1vw, 1.6rem);
+main > .sec-4 > .bottom-box > .circles > .flip-card > .flip-card-back > p {
+  font-size: clamp(1.6rem, 1vw, 1.8rem);
   font-weight: 600;
-  line-height: 1.8;
+  line-height: 2;
 }
 /* main > sec-5 --------------------------------------------------------------- */
 main > .sec-5 {
-  width: 100dvw;
-  /* min-width: 192rem; */
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   position: relative;
   cursor: default;
   white-space: nowrap;
@@ -1169,10 +1170,8 @@ main > .sec-5 > .text-container > .bottom-box > .value-wrap > .right-box:hover >
 }
 /* main > sec-6 --------------------------------------------------------------- */
 main > .sec-6 {
-  width: 100dvw;
-  min-width: 192rem;
-  height: 128dvh;
-  min-height: 118rem;
+  width: 100%;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1393,10 +1392,8 @@ main > .sec-6 > .top-box > .search-wrap > #btnSearch {
 }
 /* main > sec-7 --------------------------------------------------------------- */
 main > .sec-7 {
-  width: 100dvw;
-  min-width: 192rem;
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   padding: 10rem 0;
   display: flex;
   flex-direction: column;
@@ -1556,13 +1553,11 @@ main > .sec-7 > .marquee-wrapper > .marquee-box > .news-pages > .text-container 
   font-weight: 600;
   font-size: 1.4rem;
   color: rgba(161, 161, 162, 0.8);
-
-  /* main > banner --------------------------------------------------------------- */
 }
+/* main > banner --------------------------------------------------------------- */
 main > .banner {
-  width: 100dvw;
-  min-width: 192rem;
-
+  width: 100%;
+  height: auto;
   padding: 6rem 0;
   display: flex;
   justify-content: center;
@@ -1627,10 +1622,8 @@ main > .banner > .banner-wrapper > a > span:hover {
 }
 /* main > sec-8 --------------------------------------------------------------- */
 main > .sec-8 {
-  width: 100dvw;
-  min-width: 192rem;
-  height: 108dvh;
-  min-height: 108rem;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1692,10 +1685,8 @@ main > .sec-8 > .text-container > .contact-box > .arrow-wrapper:hover > img {
 }
 /* footer --------------------------------------------------------------- */
 footer {
-  width: 100dvw;
-  min-width: 192rem;
+  width: 100%;
   height: 35rem;
-  min-height: 35rem;
   padding: 4.8rem 0;
   background-color: var(--main-color-gray);
   box-sizing: border-box;
@@ -1868,58 +1859,68 @@ footer > .ft-bottom-wrapper > .ft-bottom-box > .bottom-leftover > .ft-bottom-mar
   gap: 3.6rem;
 }
 /* @medias wrapper --------------------------------------------------------------- */
-@media screen and (max-width: 1480px) {
-  header > .hd-container {
-    margin: 0 2.4rem;
-    justify-content: space-between;
-    width: 100%;
+@media screen and (max-width: 760px) {
+  header {
+    display: none;
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
+  header > .hd-container {
+    padding: 0 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
   header > .hd-container > .menu-box {
     display: none;
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
   header > .hd-container > .side-box > .language-box > .translate-box {
     display: none;
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
   header > .hd-container > .side-box > .tab-box {
     display: block;
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
   main > .sec-1 {
     text-align: center;
+    min-width: 50rem;
   }
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
   main > .sec-1 > .text-container {
     align-items: center;
-    position: absolute;
-    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin: 0;
+    margin: 0 auto;
   }
 }
-
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1280px) {
   main > .sec-1 > .text-container > .text-en > img {
     display: none;
   }
 }
 
+@media screen and (max-width: 1280px) {
+  main > .sec-2 {
+    display: none;
+  }
+}
 /* @keyframes wrapper --------------------------------------------------------------- */
 @keyframes bgWave {
   0% {
     transform: rotate(360deg);
   }
 }
+/* ======================================================= */
+/* 반응형 박스 다 날려버리고 텍스트만 center정렬해서 날먹하기! */
+/* ======================================================= */
