@@ -247,34 +247,41 @@ function headerHide__init() {
 // marqueeSlide ------------------------------ //
 function marqueeSlide__init() {
   window.addEventListener("load", () => {
+
     const box = document.querySelector(".marquee-box");
-    const clone = box.cloneNode(true);
-    box.parentNode.appendChild(clone);
+    const items = [...box.children];
+
+    let totalWidth = 0;
+    items.forEach(item => {
+      totalWidth += item.offsetWidth;
+    });
+
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      box.appendChild(clone);
+    });
+
+    const moveWidth = totalWidth;
 
     const tl = gsap.timeline({
       repeat: -1,
-      ease: "none",
+      ease: "none"
     });
 
-    const totalWidth = box.offsetWidth;
-
     tl.fromTo(
-      ".marquee-box",
+      box,
       { x: 0 },
       {
-        x: -totalWidth,
-        duration: 30,
-        ease: "none",
+        x: -moveWidth,
+        duration: 32,
+        ease: "none"
       }
     );
 
-    document.querySelector(".marquee-wrapper").addEventListener("mouseenter", () => {
-      tl.pause();
-    });
+    const wrapper = document.querySelector(".marquee-wrapper");
 
-    document.querySelector(".marquee-wrapper").addEventListener("mouseleave", () => {
-      tl.play();
-    });
+    wrapper.addEventListener("mouseenter", () => tl.pause());
+    wrapper.addEventListener("mouseleave", () => tl.play());
   });
 }
 // slickSlider ------------------------------ //
