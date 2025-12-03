@@ -256,7 +256,7 @@ function marqueeSlide__init() {
       ease: "none",
     });
 
-    const totalWidth = box.scrollWidth;
+    const totalWidth = box.offsetWidth;
 
     tl.fromTo(
       ".marquee-box",
@@ -282,7 +282,7 @@ function slickSlider__init() {
   $(document).ready(function () {
     $(".goods-slider").slick({
       centerMode: true,
-      centerPadding: "2rem",
+      centerPadding: "20px",
       slidesToShow: 3,
       autoplay: true,
       autoplaySpeed: 2000,
@@ -294,17 +294,7 @@ function slickSlider__init() {
           settings: {
             arrows: false,
             centerMode: true,
-            centerPadding: "4rem",
-            slidesToShow: 3,
-            autoplay: true,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: "4rem",
+            centerPadding: "40px",
             slidesToShow: 1,
             autoplay: true,
           },
