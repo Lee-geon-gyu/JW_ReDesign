@@ -247,16 +247,15 @@ function headerHide__init() {
 // marqueeSlide ------------------------------ //
 function marqueeSlide__init() {
   window.addEventListener("load", () => {
-
     const box = document.querySelector(".marquee-box");
     const items = [...box.children];
 
     let totalWidth = 0;
-    items.forEach(item => {
+    items.forEach((item) => {
       totalWidth += item.offsetWidth;
     });
 
-    items.forEach(item => {
+    items.forEach((item) => {
       const clone = item.cloneNode(true);
       box.appendChild(clone);
     });
@@ -265,7 +264,7 @@ function marqueeSlide__init() {
 
     const tl = gsap.timeline({
       repeat: -1,
-      ease: "none"
+      ease: "none",
     });
 
     tl.fromTo(
@@ -274,7 +273,7 @@ function marqueeSlide__init() {
       {
         x: -moveWidth,
         duration: 32,
-        ease: "none"
+        ease: "none",
       }
     );
 
